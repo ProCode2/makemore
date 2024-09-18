@@ -42,7 +42,7 @@ for i in range(epochs):
 
   # calculate loss (nll for classification)
   # probs[0, ys[0]], probs[1, ys[1]], probs[2, ys[2]], probs[3, ys[3]], probs[4, ys[4]]
-  loss = -probs[torch.arange(num), ys].log().mean()
+  loss = -probs[torch.arange(num), ys].log().mean() + 0.01 * (W**2).mean()
   print(loss.item())
 
   # backward pass
